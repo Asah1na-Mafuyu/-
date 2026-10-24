@@ -1,0 +1,21 @@
+Edge online speech integration
+
+Uses the Microsoft Edge online speech protocol documented by rany2/edge-tts:
+https://github.com/rany2/edge-tts
+Copyright (c) rany <rany@riseup.net> and edge-tts contributors.
+
+EdgeToken.cs / EdgeToken.java are adaptations of src/edge_tts/drm.py.
+The speech clients also follow edge-tts protocol framing and SSML conventions.
+These adapted components are distributed under the GNU LGPL version 3.
+Ported to C# and Java for this application on 2026-10-22; no Python runtime is included.
+See Edge-LICENSE.txt / LICENSE.txt and Edge-GPL-3.0.txt / GPL-3.0.txt.
+
+The complete corresponding application and adapted component source, with build
+scripts, is supplied alongside the binaries in the v0.2.0 source ZIP. You may
+modify these components and rebuild/relink the application. Reverse engineering
+for debugging such modifications is not restricted. Do not include private API
+keys or release signing credentials when redistributing the source.
+
+This is an unofficial client. Microsoft does not provide an availability
+guarantee for this consumer interface. No Microsoft API key is bundled or needed.
+Microsoft and Edge are trademarks of their respective owners.

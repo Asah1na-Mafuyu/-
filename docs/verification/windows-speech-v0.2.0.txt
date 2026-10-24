@@ -1,0 +1,10 @@
+PASS 简体中文 zh-CN-XiaoxiaoNeural 17424 bytes, 2.90s, playback position 277ms
+PASS 繁體中文 zh-TW-HsiaoChenNeural 20592 bytes, 3.43s, playback position 278ms
+PASS English en-US-JennyNeural 24624 bytes, 4.10s, playback position 288ms
+PASS 日本語 ja-JP-NanamiNeural 23760 bytes, 3.96s, playback position 293ms
+PASS 한국어 ko-KR-SunHiNeural 24912 bytes, 4.15s, playback position 292ms
+PASS Français fr-FR-DeniseNeural 19440 bytes, 3.24s, playback position 295ms
+PASS Deutsch de-DE-KatjaNeural 21744 bytes, 3.62s, playback position 290ms
+PASS Español es-ES-ElviraNeural 19872 bytes, 3.31s, playback position 291ms
+PASS Русский ru-RU-SvetlanaNeural 25488 bytes, 4.25s, playback position 289ms
+PASS UI read button without DeepSeek Key, stop during playback/loading, source invalidation, temporary audio cleanup

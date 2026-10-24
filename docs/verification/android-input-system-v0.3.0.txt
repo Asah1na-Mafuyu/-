@@ -1,0 +1,7 @@
+PASS system camera writes full photo through private content URI and returns to crop preview
+PASS retake and camera cancel preserve previous draft without translating
+PASS confirmed photo rotation/selection triggers existing translation pipeline and Key guard
+PASS microphone permission requested on demand and denial keeps voice page usable
+PASS microphone grant succeeds and missing AOSP speech engine shows actionable status
+PASS editable voice text submits as text after explicit confirmation with no stale image
+PASS no AndroidRuntime crash across camera and voice permission flows

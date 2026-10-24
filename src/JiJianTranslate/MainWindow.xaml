@@ -1,0 +1,56 @@
+<Window x:Class="JiJianTranslate.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework" Title="极简翻译" Style="{StaticResource {x:Type Window}}" Width="680" Height="790" MinWidth="380" MinHeight="540" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowDrop="True" PreviewKeyDown="WindowKeyDown" DragOver="OnDragOver" Drop="OnDrop">
+ <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="60" CornerRadius="10" GlassFrameThickness="0" ResizeBorderThickness="6"/></shell:WindowChrome.WindowChrome>
+ <Grid Margin="24,0,24,16">
+  <Grid.RowDefinitions><RowDefinition Height="68"/><RowDefinition Height="48"/><RowDefinition Height="52"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <Grid Grid.Row="0">
+   <StackPanel Orientation="Horizontal" VerticalAlignment="Center"><Border Background="{DynamicResource Accent}" Width="30" Height="30" CornerRadius="9"><TextBlock Text="译" Foreground="White" FontSize="16" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border><TextBlock Text="极简翻译" FontSize="17" FontWeight="SemiBold" VerticalAlignment="Center" Margin="10,0,0,0"/></StackPanel>
+   <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+    <Button x:Name="CompactButton" Content="小窗" Click="CompactClick" Style="{StaticResource QuietButton}" Padding="7" ToolTip="切换悬浮小窗"/>
+    <Button x:Name="PinButton" Content="&#xE718;" FontFamily="Segoe MDL2 Assets" Click="PinClick" Style="{StaticResource QuietButton}" FontSize="15" Width="32" Padding="0" ToolTip="置顶"/>
+    <Button Content="&#xE713;" FontFamily="Segoe MDL2 Assets" Click="SettingsClick" Style="{StaticResource QuietButton}" FontSize="16" Width="32" Padding="0" ToolTip="设置"/>
+    <Button Content="−" Click="MinimizeClick" Style="{StaticResource QuietButton}" FontSize="20" Width="28" Padding="0" ToolTip="最小化"/>
+    <Button Content="×" Click="HideClick" Style="{StaticResource QuietButton}" FontSize="21" Width="28" Padding="0" ToolTip="收起到托盘；右键托盘可退出"/>
+   </StackPanel>
+  </Grid>
+  <Grid Grid.Row="1" VerticalAlignment="Center"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="40"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <ComboBox x:Name="SourceLanguage" SelectionChanged="LanguageChanged" AutomationProperties.Name="源语言"/>
+   <Button Grid.Column="1" Content="⇄" FontSize="19" Style="{StaticResource QuietButton}" Click="SwapClick" Padding="0" ToolTip="交换语言"/>
+   <ComboBox Grid.Column="2" x:Name="TargetLanguage" SelectionChanged="LanguageChanged" AutomationProperties.Name="目标语言"/>
+  </Grid>
+  <Grid Grid.Row="2"><StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+   <Button x:Name="CaptureButton" Click="CaptureClick" Background="{DynamicResource Soft}" BorderThickness="0" Foreground="{DynamicResource Accent}" Padding="13,8" ToolTip="框选后自动翻译；仅发送选区"><StackPanel Orientation="Horizontal"><TextBlock Text="⌗" FontSize="17" Margin="0,0,6,0"/><TextBlock Text="截图翻译" VerticalAlignment="Center"/></StackPanel></Button>
+   <Button x:Name="ImportButton" Content="导入图片" Click="ImportClick" Style="{StaticResource QuietButton}" Margin="7,0,0,0"/>
+  </StackPanel><TextBlock x:Name="ShortcutHint" Text="Ctrl+Alt+A" Foreground="{DynamicResource Muted}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Center"/></Grid>
+  <Grid Grid.Row="3"><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="14"/><RowDefinition Height="1.15*"/></Grid.RowDefinitions>
+   <Border Background="{DynamicResource Card}" BorderBrush="{DynamicResource Line}" BorderThickness="1" CornerRadius="12" Padding="16,10,16,14">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="30"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+     <TextBlock Text="原文" Foreground="{DynamicResource Muted}" VerticalAlignment="Center" FontSize="12"/>
+     <Button x:Name="ClearButton" Content="清空" Click="ClearClick" Style="{StaticResource QuietButton}" HorizontalAlignment="Right" FontSize="12" Padding="6,4"/>
+     <Border x:Name="ImagePanel" Grid.Row="1" Background="{DynamicResource Page}" CornerRadius="7" Margin="0,5,0,9" Padding="7" Visibility="Collapsed">
+      <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="60"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+       <Image x:Name="ImagePreview" Height="42" Width="54" Stretch="Uniform"/>
+       <TextBlock x:Name="ImageInfo" Grid.Column="1" FontSize="11" Foreground="{DynamicResource Muted}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" Margin="8,0"/>
+       <Button Grid.Column="2" Content="↻" Click="RotateClick" Style="{StaticResource QuietButton}" Padding="5" ToolTip="旋转图片"/>
+       <Button Grid.Column="3" Content="裁剪" Click="CropClick" Style="{StaticResource QuietButton}" Padding="5" FontSize="11"/>
+       <Button Grid.Column="4" Content="×" Click="RemoveImageClick" Style="{StaticResource QuietButton}" Padding="5" ToolTip="移除图片"/>
+      </Grid>
+     </Border>
+     <Grid Grid.Row="2"><TextBlock x:Name="InputHint" Text="输入或粘贴文字，也可以拖入图片。" Foreground="{DynamicResource Muted}" Margin="0,8,0,0" IsHitTestVisible="False" TextWrapping="Wrap" FontSize="15"/><TextBox x:Name="InputBox" BorderThickness="0" Background="Transparent" Padding="0,6" FontSize="15" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Top" TextChanged="InputChanged" AutomationProperties.Name="待翻译文字"/></Grid>
+    </Grid>
+   </Border>
+   <Border Grid.Row="2" Background="{DynamicResource Card}" BorderBrush="{DynamicResource Line}" BorderThickness="1" CornerRadius="12" Padding="16,10,16,14">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="30"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+     <TextBlock Text="译文" Foreground="{DynamicResource Muted}" FontSize="12" VerticalAlignment="Center"/>
+     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><Button x:Name="SpeakButton" Content="朗读" Click="SpeakClick" IsEnabled="False" Style="{StaticResource QuietButton}" FontSize="12" Padding="6,4" Margin="0,0,8,0" ToolTip="使用 Edge 在线声音朗读译文"/><Button x:Name="CopyButton" Content="复制" Click="CopyClick" IsEnabled="False" Style="{StaticResource QuietButton}" FontSize="12" Padding="6,4"/></StackPanel>
+     <Grid Grid.Row="1"><TextBlock x:Name="OutputHint" Text="译文会出现在这里。" Foreground="{DynamicResource Muted}" Margin="0,8,0,0" IsHitTestVisible="False" FontSize="15"/><TextBox x:Name="OutputBox" BorderThickness="0" Background="Transparent" Padding="0,6" FontSize="15" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Top" TextChanged="OutputChanged" AutomationProperties.Name="翻译结果"/></Grid>
+     <TextBlock Grid.Row="2" x:Name="SpeechStatus" FontSize="11" Foreground="{DynamicResource Muted}" TextWrapping="Wrap" Margin="0,5,0,0" Visibility="Collapsed"/>
+    </Grid>
+   </Border>
+  </Grid>
+  <Grid Grid.Row="4" Margin="0,15,0,10"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <StackPanel VerticalAlignment="Center" Margin="0,0,10,0"><TextBlock x:Name="StatusLabel" Text="先在设置中填入 API Key" Foreground="{DynamicResource Muted}" FontSize="12" TextWrapping="Wrap" MaxHeight="52"/><TextBlock x:Name="UsageLabel" Foreground="{DynamicResource Muted}" FontSize="10" Margin="0,4,0,0" TextWrapping="Wrap"/></StackPanel>
+   <Button Grid.Column="1" x:Name="TranslateButton" Content="翻译   ↵" Click="TranslateClick" Style="{StaticResource PrimaryButton}" MinWidth="110" Height="43" VerticalAlignment="Center" ToolTip="Ctrl+Enter 翻译"/>
+  </Grid>
+  <TextBlock Grid.Row="5" x:Name="FooterHint" Text="Ctrl+Enter 翻译    ·    图片仅发送所选内容" HorizontalAlignment="Center" Foreground="{DynamicResource Muted}" FontSize="10"/>
+ </Grid>
+</Window>

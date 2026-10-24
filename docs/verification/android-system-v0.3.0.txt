@@ -1,0 +1,16 @@
+PASS signed release APK launches with native main UI
+PASS overlay settings and notification runtime consent
+PASS bubble drag, edge snap, and position survives restart
+PASS floating text entry and visible missing-Key feedback
+PASS system screenshot consent, cancel, return to original app, capture
+PASS real screen region is cropped into floating translation panel
+PASS main screenshot button preserves an already authorized session
+PASS second manual capture reuses authorized virtual display
+PASS orientation change cancels stale selection and resizes existing capture
+PASS screen-off releases projection and next capture asks again
+PASS settings close removes overlays, foreground service, and capture
+PASS Android share sheet text entry
+PASS system image picker, URI decoding, rotation, and crop
+PASS settings persist appearance and rebuild main UI in dark mode
+PASS speech autoplay defaults off, speech rate and preference persist
+PASS no AndroidRuntime crashes in complete system flow

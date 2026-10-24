@@ -1,0 +1,2 @@
+https://github.com/rany2/edge-tts/commit/bd44c1d1aaebdc1db7f47456ee12431b42ec7cac
+Retrieved 2026-10-22; src/edge_tts/drm.py, constants.py, communicate.py.

@@ -1,0 +1,39 @@
+# Rebuildable output and downloaded SDK / emulator files.
+**/bin/
+**/obj/
+**/build/
+/dist/
+*.apk
+*.aab
+*.apks
+*.exe
+*.msi
+*.msix
+*.msixbundle
+/.qa/
+/.tools/
+**/__pycache__/
+*.py[cod]
+
+# Local signing keys and credentials must stay outside Git.
+/.signing/
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+
+# Machine-specific IDE / operating-system files.
+.vs/
+.idea/
+*.user
+*.suo
+local.properties
+.DS_Store
+Thumbs.db
+Desktop.ini
+

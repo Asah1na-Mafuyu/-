@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.jijian.translate.checks">
+    <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="36" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <application android:label="极简翻译离线验证" android:debuggable="true">
+        <receiver android:name="com.jijian.translate.TestControlReceiver" android:exported="true" />
+        <service android:name="com.jijian.translate.TestRecognitionService" android:exported="true" android:enabled="false"
+            android:permission="android.permission.BIND_SPEECH_RECOGNITION">
+            <intent-filter><action android:name="android.speech.RecognitionService" /></intent-filter>
+        </service>
+    </application>
+    <instrumentation android:name="com.jijian.translate.AndroidChecks" android:targetPackage="com.jijian.translate" android:label="Offline diagnostics" />
+</manifest>

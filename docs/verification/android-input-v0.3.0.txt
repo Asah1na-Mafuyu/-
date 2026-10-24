@@ -1,0 +1,27 @@
+
+Android diagnostics: 24 passed, 0 failed
+PASS camera temporary photo URI, write/read grant, cleanup and traversal rejection
+PASS voice languages, source selection, result parsing, errors and no audio payload
+PASS Edge GEC v2 matches upstream fixed-time vectors
+PASS speech voices, Unicode chunk boundaries, XML escaping
+PASS speech binary framing, damaged frame rejection, memory audio close
+PASS Android Keystore encrypt, decrypt, no plaintext, clear
+PASS text payload, no history, thinking disabled
+PASS image payload contains PNG, original detail, JSON format
+PASS text streaming, usage, official URL, one request
+PASS image structured original and translation
+PASS HTTP 401 has no automatic retry or generation charge
+PASS HTTP 402 has no automatic retry or generation charge
+PASS HTTP 429 has no automatic retry or generation charge
+PASS broken stream cannot be a success
+PASS output truncation is incomplete and retains usage
+PASS submitted cancellation remains possibly charged
+PASS budget persistence, rollback, cancellation pending, actual usage
+PASS damaged ledger stops paid requests
+PASS image rotation and maximum dimension
+PASS crop coordinates map and clamp to image pixels
+PASS connection test only queries models
+PASS main UI integration, cache, source invalidation, image result visible
+PASS speech loading can stop and source change cancels without late playback
+PASS native speech service partial/final results, errors, cancel and text-only translation
+

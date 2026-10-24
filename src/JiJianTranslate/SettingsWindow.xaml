@@ -1,0 +1,30 @@
+<Window x:Class="JiJianTranslate.SettingsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="设置 · 极简翻译" Style="{StaticResource {x:Type Window}}" Width="465" Height="695" MinWidth="430" MinHeight="620" WindowStartupLocation="CenterOwner" ResizeMode="CanResizeWithGrip" ShowInTaskbar="False">
+ <Grid Margin="26,20"><Grid.RowDefinitions><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel>
+   <TextBlock Text="设置" FontSize="23" FontWeight="SemiBold"/>
+   <TextBlock Text="填入密钥，就可以开始翻译。" Foreground="{DynamicResource Muted}" Margin="0,7,0,23"/>
+   <TextBlock Text="DeepSeek API Key" Margin="0,0,0,7"/>
+   <PasswordBox x:Name="KeyBox" Height="40" AutomationProperties.Name="DeepSeek API Key"/>
+   <Grid Margin="0,8,0,18"><Button x:Name="TestButton" Content="测试连接" Click="TestClick" HorizontalAlignment="Left" Padding="12,6"/><Button Content="清除密钥" Click="ClearKeyClick" Style="{StaticResource QuietButton}" HorizontalAlignment="Right" Padding="8,6"/></Grid>
+   <TextBlock Text="密钥由 Windows 加密，只保存在此电脑。" Foreground="{DynamicResource Muted}" FontSize="11" Margin="0,-11,0,20"/>
+   <TextBlock Text="本机月预算（元）" Margin="0,0,0,7"/>
+   <TextBox x:Name="BudgetBox" Height="38" AutomationProperties.Name="本机月预算"/>
+   <TextBlock Text="按高峰参考价格估算，到预算后暂停请求。&#10;仅统计此电脑，最终费用以平台账单为准。" Foreground="{DynamicResource Muted}" FontSize="11" Margin="0,7,0,20" TextWrapping="Wrap"/>
+   <Grid Margin="0,0,0,18"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="18"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+    <StackPanel><TextBlock Text="截图快捷键" Margin="0,0,0,7"/><ComboBox x:Name="CaptureKey"/></StackPanel>
+    <StackPanel Grid.Column="2"><TextBlock Text="呼出小窗" Margin="0,0,0,7"/><ComboBox x:Name="WindowKey"/></StackPanel>
+   </Grid>
+   <Grid Margin="0,0,0,20"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><CheckBox x:Name="DarkCheck" Content="深色界面" VerticalAlignment="Center"/><StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right"><TextBlock Text="字号" VerticalAlignment="Center" Margin="0,0,10,0"/><ComboBox x:Name="FontSizeBox" Width="75"/></StackPanel></Grid>
+   <TextBlock Text="译文朗读 · Edge 在线语音" Margin="0,0,0,10"/>
+   <CheckBox x:Name="AutoSpeakCheck" Content="翻译完成后自动朗读" Margin="0,0,0,12"/>
+   <Grid Margin="0,0,0,10"><TextBlock Text="语速" VerticalAlignment="Center"/><ComboBox x:Name="SpeechRateBox" Width="115" HorizontalAlignment="Right"/></Grid>
+   <TextBlock Text="默认手动朗读。朗读时将译文发送至微软，不消耗 DeepSeek 额度。在线服务不可用时可稍后重试。" FontSize="11" Foreground="{DynamicResource Muted}" TextWrapping="Wrap" Margin="0,0,0,20"/>
+   <Border BorderBrush="{DynamicResource Line}" BorderThickness="0,1,0,0" Padding="0,16,0,0"><StackPanel>
+    <TextBlock Text="文字和所选图片会发送给 DeepSeek。" Foreground="{DynamicResource Muted}" FontSize="11" TextWrapping="Wrap"/>
+    <TextBlock Text="Flash · 关闭思考 · 不自动重试" Foreground="{DynamicResource Muted}" FontSize="11" Margin="0,5,0,0"/>
+    <StackPanel Orientation="Horizontal" Margin="0,8,0,0"><Button Content="打开数据目录" Click="DataClick" Style="{StaticResource QuietButton}" Padding="0,4,12,4" FontSize="11"/><Button Content="获取 API Key ↗" Click="PlatformClick" Style="{StaticResource QuietButton}" Padding="0,4" FontSize="11"/><Button Content="开源许可" Click="LicensesClick" Style="{StaticResource QuietButton}" Padding="12,4,0,4" FontSize="11"/></StackPanel>
+   </StackPanel></Border>
+  </StackPanel></ScrollViewer>
+  <StackPanel Grid.Row="1" Margin="0,12,0,0"><TextBlock x:Name="SettingsStatus" Foreground="{DynamicResource Muted}" TextWrapping="Wrap" FontSize="11" Margin="0,0,0,12"/><Grid><Button Content="取消" HorizontalAlignment="Left" Click="CancelClick" Padding="20,10"/><Button x:Name="SaveButton" Content="保存设置" HorizontalAlignment="Right" Click="SaveClick" Style="{StaticResource PrimaryButton}" Padding="24,11"/></Grid></StackPanel>
+ </Grid>
+</Window>
